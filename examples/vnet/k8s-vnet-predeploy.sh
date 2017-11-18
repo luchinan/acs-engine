@@ -1,5 +1,7 @@
 #!/bin/bash
 
+az group create -g ${RESOURCE_GROUP} -l ${LOCATION}
+
 az network vnet create -g ${RESOURCE_GROUP} -n KubernetesCustomVNET --address-prefixes 10.239.0.0/16 10.244.0.0/16 --subnet-name KubernetesSubnet --subnet-prefix 10.239.0.0/16
 
 tempfile="$(mktemp)"
