@@ -202,6 +202,7 @@ fi
 
 if [ $EXPECTED_LINUX_AGENTS -gt 0 ] ; then
   test_linux_deployment
+  exit 1
 fi
 
 if [ $EXPECTED_WINDOWS_AGENTS -gt 0 ] ; then
