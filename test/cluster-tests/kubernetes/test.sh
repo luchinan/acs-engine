@@ -190,8 +190,6 @@ if (( ${EXPECTED_DASHBOARD} != 0 )); then
         success="y"
         break
       fi
-      l="ssh -i -vT \" ${OUTPUT}/id_rsa\" -o ConnectTimeout=30 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null \"azureuser@${master}\" curl --max-time 60 http://${ip}:${port}"
-      log l
       sleep 5; count=$((count-1))
     done
     if [[ "${success}" == "n" ]]; then
