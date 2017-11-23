@@ -185,7 +185,7 @@ if (( ${EXPECTED_DASHBOARD} != 0 )); then
     success="n"
     while (( $count > 0 )); do
       log "  ... counting down $count"
-      ret=$(ssh -i "${OUTPUT}/id_rsa" -o ConnectTimeout=30 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "azureuser@${master}" "curl --max-time 60 http://${ip}:${port}" || echo "curl_error")
+      ret=$(ssh -vT -i "${SSH_KEY}" -o ConnectTimeout=30 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "azureuser@${master}" "curl --max-time 60 http://${ip}:${port}" || echo "curl_error")
       if [[ ! $ret =~ .*curl_error.* ]]; then
         success="y"
         break
